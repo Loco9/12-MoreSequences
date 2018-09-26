@@ -284,7 +284,7 @@ def draw_shapes(shapes, window):
       :type window:  rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 9. Implement and test this function. Make sure you do TO DO 8 in main first!
+    # DONE: 9. Implement and test this function. Make sure you do TO DO 8 in main first!
     #     The testing code is already written for you (that you just enabled in TO DO 8).
     #
     ####################################################################
@@ -295,8 +295,13 @@ def draw_shapes(shapes, window):
     ####################################################################
     # ------------------------------------------------------------------
 
+    seq = shapes
 
+    for k in range(len(seq)):
+        shape = seq[k]
+        shape.attach_to(window)
 
+    window.render(0.3)
 
 def run_test_rectangles_from_circles():
     """ Tests the   rectangles_from_circles    function. """
@@ -397,7 +402,7 @@ def rectangles_from_circles(circles):
       :rtype: list of rg.Rectangles
     """
     # ------------------------------------------------------------------
-    # TODO: 10. Implement and test this function.
+    # DONE: 10. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
@@ -409,6 +414,16 @@ def rectangles_from_circles(circles):
     ####################################################################
     # ------------------------------------------------------------------
 
+    seq = circles
+    new = []
+
+    for k in range(len(seq)):
+        circle = seq[k]
+        corner1 = rg.Point(circle.center.x - circle.radius, circle.center.y - circle.radius)
+        corner2 = rg.Point(circle.center.x + circle.radius, circle.center.y + circle.radius)
+        rectangle = rg.Rectangle(corner1, corner2)
+        new = new + [rectangle]
+    return new
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
